@@ -15,7 +15,7 @@ import ErrorPage from './ErrorPage'
 import Header from './Header'
 import Footer from './Footer'
 import Login from './Login'
-import { AuthContext } from './context'
+import { AuthContext, ProfileContext, UserNameContext } from './context'
 
 
 function Layout() {
@@ -63,8 +63,37 @@ const AuthContextProvider = ({ children }) => {
   )
 }
 
+
+const ProfileContextProvider = ({ children }) => {
+  const [profile, setProfile] = useState(0)
+
+  return(
+    <ProfileContext.Provider value={{profile, setProfile}} >
+      {children}
+    </ProfileContext.Provider>
+  )
+}
+
+
+const UserNameContextProvider = ({ children }) => {
+  const [userName, setUserName] = useState("")
+
+  return(
+    <UserNameContext.Provider value={{userName, setUserName}} >
+      {children}
+    </UserNameContext.Provider>
+  )
+}
+
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthContextProvider>
-    <RouterProvider router={router} />
-  </AuthContextProvider>
+  <UserNameContextProvider>
+    <ProfileContextProvider>
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
+    </ProfileContextProvider>
+  </UserNameContextProvider>
 )
