@@ -67,7 +67,7 @@ export const fetchUser = ({ auth }) => {
   })
   .catch(error => {
     console.log('ERROR: ', error)
-    auth.setAccessToken(undefined)
+    auth.setAccessToken([])
   })
 }
 

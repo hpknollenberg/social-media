@@ -97,11 +97,11 @@ const UserNameContextProvider = ({ children }) => {
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <AuthContextProvider>
   <UserNameContextProvider>
-    <ProfileContextProvider>
-      <AuthContextProvider>
-        <RouterProvider router={router} />
-      </AuthContextProvider>
-    </ProfileContextProvider>
-  </UserNameContextProvider>
+      <ProfileContextProvider>
+          <RouterProvider router={router} />
+      </ProfileContextProvider>
+    </UserNameContextProvider>
+  </AuthContextProvider>
 )
