@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import { AuthContext, ProfileContext, UserNameContext } from './context'
-import { getMessages, deleteMessage } from "./api"
+import { getMessages, deleteMessage, updateLikes } from "./api"
 
 
 const Images = () => {
@@ -30,8 +30,8 @@ const Images = () => {
     }, [auth.accessToken])
 
 
-
     const deleteButtonFunc = (id) => {
+        console.log(id)
         deleteMessage({ auth, id })
         .then ((response) => {
             console.log("DELETE: ", response)
@@ -49,6 +49,27 @@ const Images = () => {
         }
     }
 
+    const ImageQuestion = ({image}) => {
+        if (image) {
+            return (
+                <div style={{ maxHeight: ''}}>
+                    <img src={`http://127.0.0.1:8000/${image}`} 
+                        style={{ maxHeight: '15rem', maxWidth: '15rem' }} />
+                </div>
+            )
+        }
+    }
+
+
+    const LikesButton = ({id}) => {
+        return (
+            <div>
+                <button onClick={() => {updateLikes({ auth, id })}}>Like</button>
+            </div>
+        )
+    }
+
+    
     return (
         <div style={{ marginTop: 20, textAlign: 'right' }}>
             <hr></hr>
@@ -59,7 +80,10 @@ const Images = () => {
                     {messages && messages.map(message => (
                         <div key={message.id} style={{ borderStyle: 'solid ', margin: '5px', padding: '5px'}}>
                             <h4>{message.author}</h4>
+                            <ImageQuestion image={message.image} />
                             <p>{message.content}</p>
+                            <p>Total Likes: {message.likes_count}</p>
+                            <LikesButton id={message.id}/>
                             <p>{message.created_at}</p>
                             <DeleteButton author={message.author} id={message.id} />
                         </div>

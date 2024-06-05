@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import { AuthContext, ProfileContext, UserNameContext } from "./context"
 import { fetchUser } from "./api"
-import UploadImage from "./UploadImage"
 import UploadMessage from "./UploadMessage"
 import Messages from "./Messages"
 
@@ -23,7 +22,7 @@ function App() {
   }, [auth.accessToken])
 
   return (
-    <div className=''>
+    <div className='' >
       <div className="d-flex justify-content-start">
         <h1>{firstName} {lastName}</h1>
       </div>
