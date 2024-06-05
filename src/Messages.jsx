@@ -53,7 +53,7 @@ const Images = () => {
         if (image) {
             return (
                 <div style={{ maxHeight: ''}}>
-                    <img src={`https://social-media-back-end.fly.dev/images/${image}`} 
+                    <img src={`https://social-media-back-end.fly.dev${image}`} 
                         style={{ maxHeight: '15rem', maxWidth: '15rem' }} />
                 </div>
             )
