@@ -4,7 +4,9 @@ function Header() {
   return (
     <div style={{ margin: 10 }}>
       <Link style={{ marginRight: 20 }} to='/'>Home</Link>
-      <Link to='/login'>Login</Link>
+      <Link style={{ marginRight: 20 }} to='/account'>Account</Link>
+      <Link style={{ marginRight: 20 }} to='/login'>Login</Link>
+      
     </div>
   )
 }
