@@ -110,7 +110,7 @@ export const getToken = ({ auth, username, password }) => {
   })
   .catch(error => {
     console.log('ERROR: ', error)
-    auth.setAccessToken(undefined)
+    auth.setAccessToken([])
   })
 }
 
