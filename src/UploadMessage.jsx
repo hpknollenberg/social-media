@@ -35,7 +35,7 @@ const UploadImage = () => {
                     />
                 </div>
                 <div style={{ margin: "5px" }}>
-                    <input
+                    <input style={{backgroundColor: 'yellow'}}
                         accept='image/*'
                         type='file'
                         onChange={e => setImage(e.target.files[0])}

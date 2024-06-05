@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const baseUrl = "https://social-media-back-end.fly.dev"
 
+// const baseUrl = "http://127.0.0.1:8000"
+
 
 
 export const createMessage = ({ auth, message, image, profile }) => {
@@ -54,6 +56,21 @@ export const deleteMessage = ({ auth, id }) => {
 }
 
 
+export const editProfilePicture = ({ auth, image }) => {
+  return axios({
+    method: 'put',
+    url: `${baseUrl}/profile-picture/`,
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`,
+      'Content-Type': 'multipart/form-data'
+    },
+    data: {
+      image
+    }
+  })
+}
+
+
 export const fetchUser = ({ auth }) => {
   return axios({
     method: 'get',
@@ -66,7 +83,7 @@ export const fetchUser = ({ auth }) => {
     return response
   })
   .catch(error => {
-    console.log('ERROR: ', error)
+    console.log('FETCH USER ERROR: ', error)
     auth.setAccessToken([])
   })
 }

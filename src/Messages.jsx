@@ -22,7 +22,7 @@ const Images = () => {
 
         const intervalFunc = setInterval(() => {
             getMessagesNow()
-        }, 10000)
+        }, 1000)
         
         getMessagesNow()
         return () => clearInterval(intervalFunc)
@@ -42,7 +42,7 @@ const Images = () => {
         if (author === userName) {
             return (
                 <div>
-                    <button
+                    <button style={{ backgroundColor: 'red' }}
                     onClick={() => {deleteButtonFunc(id)}}>Delete Message</button>
                 </div>
             )
@@ -64,7 +64,7 @@ const Images = () => {
     const LikesButton = ({id}) => {
         return (
             <div>
-                <button onClick={() => {updateLikes({ auth, id })}}>Like</button>
+                <button style={{ backgroundColor: 'blue', color: 'white', borderRadius: '10px' }} onClick={() => {updateLikes({ auth, id })}}>Like</button>
             </div>
         )
     }
@@ -73,12 +73,12 @@ const Images = () => {
     return (
         <div style={{ marginTop: 20, textAlign: 'right' }}>
             <hr></hr>
-            <h1>Messages</h1>
+            <h1 style={{ backgroundColor: "pink", textShadow: "10px 10px black", color: "white"}}>⬇️Messages⬇️</h1>
             <hr></hr>
             <div className="d-flex justify-content-end">
                 <div>
                     {messages && messages.map(message => (
-                        <div key={message.id} style={{ borderStyle: 'solid ', margin: '5px', padding: '5px'}}>
+                        <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '5px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px'}}>
                             <h4>{message.author}</h4>
                             <ImageQuestion image={message.image} />
                             <p>{message.content}</p>
