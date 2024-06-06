@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// export const baseUrl = "https://social-media-back-end.fly.dev"
+export const baseUrl = "https://social-media-back-end.fly.dev"
 
-export const baseUrl = "http://127.0.0.1:8000"
+// export const baseUrl = "http://127.0.0.1:8000"
 
 
 export const createComment = ({ auth, content, image, profile, message}) => {
