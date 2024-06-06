@@ -103,7 +103,7 @@ const Images = () => {
                             <p>Total Likes: {message.likes_count}</p>
                             <LikesButton id={message.id}/>
                             <p>{message.created_at}</p>
-                            <DeleteButton author={message.author} id={message.id} />
+                            <DeleteButton author={message.author.user} id={message.id} />
                         </div>
                     ))}
                 </div>
