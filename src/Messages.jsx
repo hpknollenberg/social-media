@@ -17,7 +17,6 @@ const Images = () => {
             if (auth.accessToken) {
                 getMessages({auth})
                     .then((response) => {
-                        console.log("Message: ", response)
                         setMessages(response.data)
                     })
                     .catch(error => console.log('ERROR: ', error))

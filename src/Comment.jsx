@@ -20,7 +20,6 @@ const Comment = ({message, id}) => {
             if (auth.accessToken) {
                 getComments({auth})
                     .then((response) => {
-                        console.log("Comments: ", response)
                         setComments(response.data)
                     })
                     .catch(error => console.log('ERROR: ', error))

@@ -3,6 +3,7 @@ import { AuthContext, ProfileContext, UserNameContext } from "./context"
 import { fetchUser, baseUrl } from "./api"
 import UploadMessage from "./UploadMessage"
 import Messages from "./Messages"
+import { useNavigate } from "react-router-dom"
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [lastName, setLastName] = useState("")
   const {userName, setUserName} = useContext(UserNameContext)
   const [profilePicture, setProfilePicture] = useState(undefined)
+  const navigate = useNavigate()
   
   useEffect(() => {
     fetchUser({ auth })
@@ -21,6 +23,9 @@ function App() {
       setProfile(response.data.id)
       setUserName(response.data.user)
       setProfilePicture(response.data.profile_picture)
+    })
+    .catch(() => {
+      navigate("/login")
     })
   }, [auth.accessToken])
 
