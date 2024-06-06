@@ -1,9 +1,26 @@
 import axios from 'axios'
 
-export const baseUrl = "https://social-media-back-end.fly.dev"
+// export const baseUrl = "https://social-media-back-end.fly.dev"
 
-// export const baseUrl = "http://127.0.0.1:8000"
+export const baseUrl = "http://127.0.0.1:8000"
 
+
+export const createComment = ({ auth, content, image, profile, message}) => {
+  return axios({
+    method: 'post',
+    url: `${baseUrl}/create-comment/`,
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`,
+      'Content-Type': 'multipart/form-data'
+    },
+    data: {
+      content,
+      image,
+      profile,
+      message
+    }
+  })
+}
 
 
 export const createMessage = ({ auth, message, image, profile }) => {
@@ -46,6 +63,20 @@ export const deleteMessage = ({ auth, id }) => {
   return axios({
     method: 'delete',
     url: `${baseUrl}/delete-message/`,
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`
+    },
+    data: {
+      id
+    }
+  })
+}
+
+
+export const deleteComment = ({ auth, id }) => {
+  return axios({
+    method: 'delete',
+    url: `${baseUrl}/delete-comment/`,
     headers: {
       Authorization: `Bearer ${auth.accessToken}`
     },
@@ -116,6 +147,17 @@ export const getMessages = ({ auth }) => {
 }
 
 
+export const getComments = ({ auth }) => {
+  return axios({
+    method: 'get',
+    url: `${baseUrl}/get-comments`,
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`
+    }
+  })
+}
+
+
 export const getToken = ({ auth, username, password }) => {
   axios.post(`${baseUrl}/token/`, {
     username: username,
@@ -128,6 +170,27 @@ export const getToken = ({ auth, username, password }) => {
     console.log('ERROR: ', error)
     auth.setAccessToken([])
   })
+}
+
+
+export const updateCommentLikes = ({ auth, id }) => {
+  return axios({
+    method: 'put',
+    url: `${baseUrl}/update-comment-likes/`,
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`
+    },
+    data: {
+      id
+    }
+  }) 
+    .then(response => {
+      console.log("UPDATE COMMENT LIKES: ", response)
+      return response
+    })
+    .catch(error => {
+      console.log("COMMENT LIKES ERROR: ", error)
+    })
 }
 
 
