@@ -11,7 +11,12 @@ const CreateNewUser = () => {
 
   const submit = () => {
     createUser({ username, password, firstName, lastName })
-  }
+    setUsername("")
+    setPassword("")
+    setFirstName("")
+    setLastName("")
+    }
+  
 
   return (
     <div>

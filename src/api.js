@@ -110,7 +110,6 @@ export const fetchUser = ({ auth }) => {
       Authorization: `Bearer ${auth.accessToken}`
     }
   }).then(response => {
-    console.log('PROFILE: ', response)
     return response
   })
   .catch(error => {
@@ -128,7 +127,6 @@ export const fetchOtherUser = ({ auth, otherProfile }) => {
       Authorization: `Bearer ${auth.accessToken}`
     }
   }).then(response => {
-    console.log('OTHER PROFILE: ', response)
     return response
   }).catch(error => {
     console.log('OTHER PROFILE ERROR: ', error)
@@ -159,12 +157,12 @@ export const getComments = ({ auth }) => {
 
 
 export const getToken = ({ auth, username, password }) => {
-  axios.post(`${baseUrl}/token/`, {
+  return axios.post(`${baseUrl}/token/`, {
     username: username,
     password: password
   }).then(response => {
-    console.log('RESPONSE: ', response)
     auth.setAccessToken(response.data.access)
+    return response
   })
   .catch(error => {
     console.log('ERROR: ', error)
@@ -185,7 +183,6 @@ export const updateCommentLikes = ({ auth, id }) => {
     }
   }) 
     .then(response => {
-      console.log("UPDATE COMMENT LIKES: ", response)
       return response
     })
     .catch(error => {
@@ -206,7 +203,6 @@ export const updateLikes = ({ auth, id }) => {
     }
   }) 
     .then(response => {
-      console.log("UPDATE LIKES: ", response)
       return response
     })
     .catch(error => {
