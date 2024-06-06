@@ -14,6 +14,7 @@ const Images = () => {
             if (auth.accessToken) {
                 getMessages({auth})
                     .then((response) => {
+                        console.log("Message: ", response)
                         setMessages(response.data)
                     })
                     .catch(error => console.log('ERROR: ', error))
@@ -53,7 +54,7 @@ const Images = () => {
         if (image) {
             return (
                 <div style={{ maxHeight: ''}}>
-                    <img src={`https://social-media-back-end.fly.dev${image}`} 
+                    <img src={`http://127.0.0.1:8000${image}`} 
                         style={{ maxHeight: '15rem', maxWidth: '15rem' }} />
                 </div>
             )
@@ -70,6 +71,23 @@ const Images = () => {
     }
 
     
+    const ProfileInfoDisplay = ({user, picture}) => {
+        if (picture) {
+            return (
+                <div>
+                    <h4> <img style={{ maxHeight: '3rem', maxWidth: '3rem', borderRadius: '10px' }} src={`http://127.0.0.1:8000${picture}`} /> {user} </h4>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h4> {user} </h4>
+                </div>
+            )
+        }
+    }
+
+
     return (
         <div style={{ marginTop: 20, textAlign: 'right' }}>
             <hr></hr>
@@ -79,7 +97,7 @@ const Images = () => {
                 <div>
                     {messages && messages.map(message => (
                         <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '5px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px'}}>
-                            <h4>{message.author}</h4>
+                            <ProfileInfoDisplay user={message.author.user} picture={message.author.profile_picture} />
                             <ImageQuestion image={message.image} />
                             <p>{message.content}</p>
                             <p>Total Likes: {message.likes_count}</p>
