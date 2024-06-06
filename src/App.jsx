@@ -4,6 +4,7 @@ import { fetchUser } from "./api"
 import UploadMessage from "./UploadMessage"
 import Messages from "./Messages"
 
+
 function App() {
   const { auth } = useContext(AuthContext)
   const {profile, setProfile} = useContext(ProfileContext)
@@ -27,7 +28,7 @@ function App() {
     if (profilePicture) {
       return (
       <div>
-        <img src={`https://social-media-back-end.fly.dev${profilePicture}`} 
+        <img src={`http://127.0.0.1:8000${profilePicture}`} 
             style={{ maxHeight: '7rem', maxWidth: '7rem' }} />
       </div>
       )

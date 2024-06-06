@@ -16,7 +16,8 @@ import Header from './Header'
 import Footer from './Footer'
 import Login from './Login'
 import Account from './Account'
-import { AuthContext, ProfileContext, UserNameContext } from './context'
+import Profiles from './Profiles'
+import { AuthContext, ProfileContext, UserNameContext, OtherProfileContext } from './context'
 
 
 function Layout() {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/account',
         element: <Account />
+      },
+      {
+        path: 'profiles',
+        element: <Profiles />
       }
     ]
   }
@@ -99,13 +104,34 @@ const UserNameContextProvider = ({ children }) => {
 }
 
 
+const OtherProfileContextProvider = ({ children }) => {
+  let tempOtherProfile = JSON.parse(localStorage.getItem('other-profile'))
+  
+  const [otherProfile, setOtherProfile] = useState(tempOtherProfile ? tempOtherProfile : 0)
+
+  useEffect(() => {
+    localStorage.setItem("other-profile", JSON.stringify(otherProfile))
+  }, [otherProfile])
+  
+
+
+
+  return (
+    <OtherProfileContext.Provider value={{otherProfile, setOtherProfile}}>
+      {children}
+    </OtherProfileContext.Provider>
+  )
+}
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthContextProvider>
-  <UserNameContextProvider>
+    <UserNameContextProvider>
       <ProfileContextProvider>
+        <OtherProfileContextProvider>
           <RouterProvider router={router} />
+        </OtherProfileContextProvider>
       </ProfileContextProvider>
     </UserNameContextProvider>
   </AuthContextProvider>
