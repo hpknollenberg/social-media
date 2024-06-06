@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const baseUrl = "https://social-media-back-end.fly.dev"
+export const baseUrl = "https://social-media-back-end.fly.dev"
 
-// const baseUrl = "http://127.0.0.1:8000"
+// export const baseUrl = "http://127.0.0.1:8000"
 
 
 
@@ -85,6 +85,22 @@ export const fetchUser = ({ auth }) => {
   .catch(error => {
     console.log('FETCH USER ERROR: ', error)
     auth.setAccessToken([])
+  })
+}
+
+
+export const fetchOtherUser = ({ auth, otherProfile }) => {
+  return axios({
+    method: 'get',
+    url: `${baseUrl}/other-profile/${otherProfile}`,
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`
+    }
+  }).then(response => {
+    console.log('OTHER PROFILE: ', response)
+    return response
+  }).catch(error => {
+    console.log('OTHER PROFILE ERROR: ', error)
   })
 }
 

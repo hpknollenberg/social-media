@@ -97,11 +97,11 @@ const Images = () => {
             <hr></hr>
             <div className="d-flex justify-content-end">
                 <div>
-                    {messages && messages.map(message => (
-                        <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '5px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px'}}>
+                    {messages && messages.filter((x) => x.author.id === otherProfile).map(message => (
+                        <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '5px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px' }}>
                             <ProfileInfoDisplay user={message.author.user} picture={message.author.profile_picture} id={message.author.id} />
                             <ImageQuestion image={message.image} />
-                            <p>{message.content}</p>
+                            <p style={{ textWrap: "wrap" }}>{message.content}</p>
                             <p>Total Likes: {message.likes_count}</p>
                             <LikesButton id={message.id}/>
                             <p>{message.created_at}</p>
