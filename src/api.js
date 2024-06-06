@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// const baseUrl = "https://social-media-back-end.fly.dev"
+const baseUrl = "https://social-media-back-end.fly.dev"
 
-const baseUrl = "http://127.0.0.1:8000"
+// const baseUrl = "http://127.0.0.1:8000"
 
 
 

@@ -54,7 +54,7 @@ const Images = () => {
         if (image) {
             return (
                 <div style={{ maxHeight: ''}}>
-                    <img src={`http://127.0.0.1:8000${image}`} 
+                    <img src={`https://social-media-back-end.fly.dev${image}`} 
                         style={{ maxHeight: '15rem', maxWidth: '15rem' }} />
                 </div>
             )
@@ -75,7 +75,7 @@ const Images = () => {
         if (picture) {
             return (
                 <div>
-                    <h4> <img style={{ maxHeight: '3rem', maxWidth: '3rem', borderRadius: '10px' }} src={`http://127.0.0.1:8000${picture}`} /> {user} </h4>
+                    <h4> <img style={{ maxHeight: '3rem', maxWidth: '3rem', borderRadius: '10px' }} src={`https://social-media-back-end.fly.dev${picture}`} /> {user} </h4>
                 </div>
             )
         } else {

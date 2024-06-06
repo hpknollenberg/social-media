@@ -27,7 +27,7 @@ function App() {
     if (profilePicture) {
       return (
       <div>
-        <img src={`http://127.0.0.1:8000${profilePicture}`} 
+        <img src={`https://social-media-back-end.fly.dev${profilePicture}`} 
             style={{ maxHeight: '7rem', maxWidth: '7rem' }} />
       </div>
       )
