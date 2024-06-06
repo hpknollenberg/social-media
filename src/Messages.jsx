@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { AuthContext, ProfileContext, UserNameContext, OtherProfileContext } from './context'
 import { getMessages, deleteMessage, updateLikes, baseUrl } from "./api"
 import { Link } from "react-router-dom"
+import Comment from "./Comment"
 
 
 const Images = () => {
@@ -98,7 +99,7 @@ const Images = () => {
             <div className="d-flex justify-content-end">
                 <div>
                     {messages && messages.map(message => (
-                        <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '5px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px'}}>
+                        <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '10px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px'}}>
                             <ProfileInfoDisplay user={message.author.user} picture={message.author.profile_picture} id={message.author.id} />
                             <ImageQuestion image={message.image} />
                             <p>{message.content}</p>
@@ -106,6 +107,7 @@ const Images = () => {
                             <LikesButton id={message.id}/>
                             <p>{message.created_at}</p>
                             <DeleteButton author={message.author.user} id={message.id} />
+                            <Comment message={message.id} id={message.id}/>
                         </div>
                     ))}
                 </div>
