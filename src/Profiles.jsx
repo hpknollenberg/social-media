@@ -27,7 +27,7 @@ function App() {
     if (profilePicture) {
       return (
       <div>
-        <img src={`${baseUrl}{profilePicture}`} 
+        <img src={`${baseUrl}${profilePicture}`} 
             style={{ maxHeight: '7rem', maxWidth: '7rem' }} />
       </div>
       )
