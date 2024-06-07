@@ -101,7 +101,7 @@ const Images = () => {
                         <div key={message.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '10px', padding: '5px', backgroundColor: 'yellow', boxShadow: '10px 10px 10px'}}>
                             <ProfileInfoDisplay user={message.author.user} picture={message.author.profile_picture} id={message.author.id} />
                             <ImageQuestion image={message.image} />
-                            <p>{message.content}</p>
+                            <p style={{ textWrap: "wrap", fontWeight: "bold" }}>{message.content}</p>
                             <p>Total Likes: {message.likes_count}</p>
                             <LikesButton id={message.id}/>
                             <p>{message.created_at}</p>
