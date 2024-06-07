@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import { AuthContext, UserNameContext, OtherProfileContext } from "./context"
-import { fetchOtherUser } from "./api"
+import { fetchOtherUser, baseUrl } from "./api"
 import UploadMessage from "./UploadMessage"
 import ProfileMessages from "./ProfileMessages"
 
@@ -27,7 +27,7 @@ function App() {
     if (profilePicture) {
       return (
       <div>
-        <img src={`http://127.0.0.1:8000${profilePicture}`} 
+        <img src={`baseUrl${profilePicture}`} 
             style={{ maxHeight: '7rem', maxWidth: '7rem' }} />
       </div>
       )
