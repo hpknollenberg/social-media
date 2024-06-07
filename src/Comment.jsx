@@ -115,7 +115,8 @@ const Comment = ({message, id}) => {
 
 
     return (
-        <div className=''>   
+        <div className='' style={{ backgroundColor: "lightgoldenrodyellow"}}>   
+            <h4 style={{ backgroundColor: "yellow", textShadow: "10px 10px black", color: "pink"}}>⬇️Comments⬇️</h4>
             <hr></hr>           
             <div style={{ margin: "5px" }}>
                 <input 
@@ -139,7 +140,7 @@ const Comment = ({message, id}) => {
                     <div key={cont.id} style={{ borderStyle: 'solid', borderWidth: "1px", margin: '10px', padding: '5px', backgroundColor: 'pink', boxShadow: '10px 10px 10px'}}>
                         <ProfileInfoDisplay user={cont.author.user} picture={cont.author.profile_picture} id={cont.author.id} />
                         <ImageQuestion image={cont.image} />
-                        <p>{cont.content}</p>
+                        <p style={{ textWrap: "wrap", fontWeight: "bold" }}>{cont.content}</p>
                         <p>Total Likes: {cont.likes_count}</p>
                         <LikesButton id={cont.id}/>
                         <p>{cont.created_at}</p>
